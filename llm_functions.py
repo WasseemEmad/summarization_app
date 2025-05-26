@@ -29,7 +29,7 @@ openai = OpenAI()
 MODEL = "gpt-4o-mini"
 
 
-def fetch_latest_articles(topic, max_results=5):
+def fetch_latest_articles(topic, max_results):
         """
         Fetch the latest articles from 3DPrint.com based on a specific topic.
         """
@@ -72,7 +72,7 @@ def message_for_openai(system_prompt,user_prompt):
             {"role": "user", "content": user_prompt}
         ]
         
-def get_message(topic,max_results=2):
+def get_message(topic,max_results):
         """
         Get the message to send to OpenAI.
         """
