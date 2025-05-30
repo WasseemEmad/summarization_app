@@ -4,3 +4,4 @@ beautifulsoup4
 duckduckgo-search
 openai
 python-dotenv
+pandas
