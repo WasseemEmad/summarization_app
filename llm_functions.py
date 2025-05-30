@@ -74,7 +74,7 @@ Please:
 2. List any companies mentioned.
 3. Identify potential buying signals for 3D design trends.
 4. if there is any trends or techniques mentioned that could be relevant to 3D printing mention them.
-5. Mention how to start in this technique or trend.
+5. Mention how to start in this technique or trend by giving advice related to the trend or technique not just basic advice.
 6. Rate the buying potential from 0 to 10 and justify it.
 """
 
