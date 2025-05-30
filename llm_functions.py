@@ -49,12 +49,13 @@ def fetch_latest_articles(topic, max_results=5):
 
 def get_system_prompt(topic):
     return f"""
-You are an AI assistant helping a design software company identify potential customers in the 3D printing space.
+You are an AI assistant helping a freelancer to identify potential customers in the 3D printing space by making a research.
 
 You will:
 - Summarize the content of the website.
 - Identify any companies mentioned.
-- Highlight announcements, trends, or projects that suggest they might need 3D design software.
+- Highlight announcements, trends, or projects that suggest they might be intersted in 3D design trends.
+- Mention how to start in this technique or trend.
 - Score how likely they are to be interested (0-10) and explain why.
 
 Respond in markdown format.
@@ -71,8 +72,10 @@ Here is the full content of the website:
 Please:
 1. Summarize the key points.
 2. List any companies mentioned.
-3. Identify potential buying signals for 3D design software.
-4. Rate the buying potential from 0 to 10 and justify it.
+3. Identify potential buying signals for 3D design trends.
+4. if there is any trends or techniques mentioned that could be relevant to 3D printing mention them.
+5. Mention how to start in this technique or trend.
+6. Rate the buying potential from 0 to 10 and justify it.
 """
 
 
@@ -113,10 +116,3 @@ def analyze_articles(topic="3D Printing trends", max_results=5, save_csv=True):
         print("\n✅ Results saved to 3d_trend_company_insights.csv")
 
     return summaries
-
-
-if __name__ == "__main__":
-    topic = "3D Printing market trends"
-    results = analyze_articles(topic=topic, max_results=5)
-    for i, res in enumerate(results, 1):
-        print(f"\n==== ARTICLE #{i} ====\nTitle: {res['title']}\nURL: {res['url']}\n\n{res['summary']}\n")
