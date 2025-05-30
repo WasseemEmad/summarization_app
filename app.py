@@ -1,5 +1,5 @@
 import streamlit as st
-from ai_trend_scraper import analyze_articles
+from llm_functions import analyze_articles
 
 st.set_page_config(page_title="3D Printing Lead Finder", layout="wide")
 st.title("🔍 3D Printing Market Article Analyzer")
