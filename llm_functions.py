@@ -68,6 +68,12 @@ Focus especially on:
 - Partnerships in AM (Additive Manufacturing)
     
 Respond in markdown format with structured headings.
+
+⚠️ If the webpage has no usable content (e.g., access denied, JavaScript required, blank page), do not generate a summary or include the article.
+Respond only if you can extract meaningful information.
+Output must be in markdown.
+
+If it did not provide usable content for analysis do not use it in the results.
 """
 
 
@@ -125,5 +131,3 @@ def analyze_articles(topic="3D Printing trends", max_results=5, save_csv=True):
         print("\n✅ Results saved to 3d_trend_company_insights.csv")
 
     return summaries
-
-
