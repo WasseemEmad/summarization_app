@@ -23,7 +23,8 @@ if st.button("Analyze"):
 if st.session_state.summaries:
     st.success("✅ Analysis complete! Scroll down to view insights.")
     for idx, article in enumerate(st.session_state.summaries, 1):
-        if len(article['summary']) < 300:
+        summary_text = article['summary'].lower()
+        if len(article['summary']) < 300 or "access denied" in summary_text:
             continue  # skip short summaries
         with st.expander(f"Article #{idx}: {article['title']}"):
             st.markdown(f"**URL**: [{article['url']}]({article['url']})")
