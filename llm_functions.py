@@ -43,39 +43,48 @@ def fetch_latest_articles(topic, max_results=5):
     """
     Fetch the latest articles using DuckDuckGo.
     """
-    results = DDGS().text(topic, safesearch='off', backend="lite", timelimit='m', max_results=max_results)
+    results = DDGS().text(topic, safesearch='off', backend="lite", timelimit='d', max_results=max_results)
     return [item['href'] for item in results]
 
 
 def get_system_prompt(topic):
     return f"""
-You are an AI assistant helping a freelancer to identify potential customers in the 3D printing space by making a research.
+You are an AI assistant helping a freelancer identify potential customers in the 3D printing industry who might be interested in design automation solutions like Trinckle 3D.
+You will be analyzing full article pages. If the article content is missing or invalid, it will be skipped and not included in the results.
 
 You will:
-- Summarize the content of the website.
-- Identify any companies mentioned.
-- Highlight announcements, trends, or projects that suggest they might be intersted in 3D design trends.
-- Mention how to start in this technique or trend.
-- Score how likely they are to be interested (0-10) and explain why.
+- Summarize the website's key content.
+- Identify companies, their projects, and technologies they’re using.
+- Highlight trends or initiatives in design automation, customization, or parametric modeling.
+- Note any signs they might benefit from Trinckle 3D-like software.
+- Mention how to get started with any mentioned trend or tech.
+- Rate their likelihood of buying design software (0-10) and explain why.
 
-Respond in markdown format.
+Focus especially on:
+- Parametric design
+- Custom part generation
+- Internal workflows or software development
+- Manufacturing automation or design bottlenecks
+- Partnerships in AM (Additive Manufacturing)
+    
+Respond in markdown format with structured headings.
 """
 
 
 def build_user_prompt(website):
-    return f"""You are looking at a webpage titled: "{website.title}"
+    return f"""You're reviewing a webpage titled: "{website.title}"
 
-Here is the full content of the website:
+Here's the full text content:
 
 {website.text}
 
-Please:
-1. Summarize the key points.
-2. List any companies mentioned.
-3. Identify potential buying signals for 3D design trends.
-4. if there is any trends or techniques mentioned that could be relevant to 3D printing mention them.
-5. Mention how to start in this technique or trend by giving advice related to the trend or technique not just basic advice.
-6. Rate the buying potential from 0 to 10 and justify it.
+Please perform the following:
+1. Summarize the key insights.
+2. List all companies mentioned and their projects.
+3. Extract any 3D design or manufacturing trends (especially parametric, automated, or customizable workflows).
+4. Identify any signs that they might benefit from Trinckle 3D software (design automation, mass customization, etc.).
+5. Explain how one might get started with any of the trends or tools mentioned.
+6. Rate the company’s buying potential for a design automation tool (0-10) and justify it with clear evidence.
 """
 
 
@@ -116,3 +125,5 @@ def analyze_articles(topic="3D Printing trends", max_results=5, save_csv=True):
         print("\n✅ Results saved to 3d_trend_company_insights.csv")
 
     return summaries
+
+
