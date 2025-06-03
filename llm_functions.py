@@ -70,7 +70,7 @@ Focus especially on:
 Respond in markdown format with structured headings.
 
 ⚠️ If the webpage has no usable content (e.g., access denied, JavaScript required, blank page), do not generate a summary or include the article.
-Respond only if you can extract meaningful information.
+Respond only if you can extract meaningful information, if this happends do not return a respond with more than 100 character.
 Output must be in markdown.
 
 If it did not provide usable content for analysis do not use it in the results.
