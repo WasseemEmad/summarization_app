@@ -1,5 +1,5 @@
 import streamlit as st
-from llm_functions.py import analyze_articles
+from llm_functions import analyze_articles
 import pandas as pd
 
 
